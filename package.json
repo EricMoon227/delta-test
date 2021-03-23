@@ -20,6 +20,9 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@react-hook/copy": "^2.0.1",
     "@rehooks/local-storage": "^2.4.0",
