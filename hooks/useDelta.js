@@ -12,7 +12,6 @@ const NUM_EPOCH = 7;
 const useDelta = () => {
   const yam = useYam();
   const wallet = useWallet();
-
   const [data, setData] = useState({
     balance: DATA_UNAVAILABLE,
     total: DATA_UNAVAILABLE,
@@ -44,14 +43,12 @@ const useDelta = () => {
 
       vestingTransactions.push({
         amount: vestingTransactionDetails.amount / 1e18,
-        fullVestingTimestamp: vestingTransactionDetails.fullVestingTimestamp,
+        fullVestingTimestamp: vestingTransactionDetails.fullVestingTimestamp * 1000,
         immature: vestingTransactionDetails.immature / 1e18,
         mature: vestingTransactionDetails.mature / 1e18,
         percentVested: (vestingTransactionDetails.mature / 1e18) / (vestingTransactionDetails.amount / 1e18)
       });
     }
-
-    const block = await yam.web3.eth.getBlock("latest");
 
     setData(data => ({
       ...data,
@@ -59,8 +56,8 @@ const useDelta = () => {
       mature,
       immature,
       percentVested: mature / total,
-      fullyVestedAt,
-      vestingInProgress: fullyVestedAt > block.timestamp,
+      fullyVestedAt: fullyVestedAt * 1000,
+      vestingInProgress: fullyVestedAt * 1000 > moment.now(),
       vestingTransactions
     }))
   };

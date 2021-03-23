@@ -1,7 +1,6 @@
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import { Community } from '../Community';
-import { Debug } from '../Debug';
 import { NavBar } from '../NavBar';
 
 const MainLayout = ({ children }) => {
@@ -79,12 +78,6 @@ const MainLayout = ({ children }) => {
         <Community />
       </div>
     </div>
-
-    {process.env.NODE_ENV !== 'production' && <>
-      <div className="fixed bottom-0 left-0">
-        <Debug />
-      </div>
-    </>}
   </>;
 };
 

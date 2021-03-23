@@ -7,7 +7,6 @@ const GlobalHooksProvider = ({ children }) => {
   const staking = useStaking();
   const rebasing = useRebasing();
 
-
   // TODO: change to rlp
   const rlpInfo = useTokenBalance('delta');
 
@@ -18,8 +17,7 @@ const GlobalHooksProvider = ({ children }) => {
         lswStats,
         rlpInfo,
         staking,
-        rebasing,
-
+        rebasing
       }}
     >
       {children}

@@ -24,11 +24,7 @@ const Rebasing = () => {
 
   useEffect(() => {
     const update = () => {
-      setTimeLeftUntilNextRebase(
-        time.getTimeLeft(
-          globalHooks.blockInfo.block.timestamp,
-          globalHooks.rebasing.rebasingInfo.nextRebaseTimestamp
-        ));
+      setTimeLeftUntilNextRebase(time.getTimeLeft(globalHooks.rebasing.rebasingInfo.nextRebaseTimestamp));
     };
 
     if (globalHooks.rebasing.rebasingInfo.nextRebaseTimestamp !== DATA_UNAVAILABLE) {
@@ -37,7 +33,7 @@ const Rebasing = () => {
 
     const interval = setInterval(update, REFRESH_RATE);
     return () => clearInterval(interval);
-  }, [globalHooks.rebasing.rebasingInfo.nextRebaseTimestamp, globalHooks.blockInfo.block.timestamp]);
+  }, [globalHooks.rebasing.rebasingInfo.nextRebaseTimestamp]);
 
   return <DeltaSection requiresConnectedWallet title="Rebasing is Soon">
     <DeltaPanel>
