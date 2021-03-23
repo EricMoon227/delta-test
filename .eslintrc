@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "nextjs"
+  ],
+  "rules": {
+    "prettier/prettier": "off",
+    "no-console": "off",
+    "radix": "off",
+    "no-param-reassign": "off",
+    "no-shadow": "off",
+    "no-debugger": "off",
+    "max-len": "off",
+    "no-plusplus": "off"
+  }
+}
